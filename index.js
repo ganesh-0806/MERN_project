@@ -8,7 +8,7 @@ const authRoutes = require('./routes/authRoutes'); //instance of routing module 
 const keys = require('./config/keys');
 
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 
 const app = express(); //Get the instance of express application
 
