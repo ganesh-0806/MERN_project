@@ -6,7 +6,8 @@ const bodyParser = require('body-parser'); // to parse the req body
 const authRoutes = require('./routes/authRoutes'); //instance of routing module authRoutes
 const billingRoutes = require('./routes/billingRoutes');
 const keys = require('./config/keys');
-require('./models/users');  // create a collection in mongooseDB
+require('./models/User');  // create a collection in mongooseDB
+require('./models/Survey');  // create a collection in mongooseDB
 require('./services/passport'); // The passport service which has to be executed on index.js
 
 
@@ -29,6 +30,7 @@ app.use(passport.session());
 // routes to handle network requests
 authRoutes(app);
 billingRoutes(app);
+require('./routes/surveyRoutes')(app);
 
 //During production the express has to deal with react paths
 if (process.env.NODE_ENV === 'production') {
